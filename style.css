@@ -11,8 +11,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background: linear-gradient(to top left, #b657ce, #8f3cad); */
-  background: linear-gradient(to top left, #2d2a2e, #323033);
+  background: linear-gradient(to top left, #b657ce, #563463);
+  /* background: linear-gradient(to top left, #2d2a2e, #323033); */
 }
 
 .container {
