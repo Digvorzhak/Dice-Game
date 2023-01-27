@@ -80,6 +80,8 @@ const savePoints = () => {
 
 const newGame = () => {
   diceArr = [0, 0];
+  dice0.setAttribute("src", "/Assets/images/dice-3.png");
+  dice1.setAttribute("src", "/Assets/images/dice-5.png");
   player1Score.value = 0;
   player2Score.value = 0;
   player1Score.innerText = 0;
