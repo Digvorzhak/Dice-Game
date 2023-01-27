@@ -32,6 +32,7 @@ const rollDices = () => {
     dice0.setAttribute("src", `/Assets/images/dice-${diceArr[0]}.png`);
     dice1.setAttribute("src", `/Assets/images/dice-${diceArr[1]}.png`);
     if (diceArr[0] + diceArr[1] === 12) {
+      fadeOut();
       if (activePlayer) {
         diceArr = [0, 0];
         player1Current.value = 0;
@@ -64,6 +65,7 @@ const savePoints = () => {
     if (player1Score.value >= targetScore) {
       activeGame = false;
       player1Card.style.background = "#2D2A2E";
+      player2Card.style.background = "#cdb1e9";
     }
   } else {
     player2Score.value += player2Current.value;
@@ -74,6 +76,7 @@ const savePoints = () => {
     if (player2Score.value >= targetScore) {
       activeGame = false;
       player2Card.style.background = "#2D2A2E";
+      player1Card.style.background = "#cdb1e9";
     }
   }
 };
@@ -91,9 +94,20 @@ const newGame = () => {
   player1Current.innerText = 0;
   player2Current.innerText = 0;
   activeGame = true;
+  fadeOut();
   activePlayer = true;
-  player1Card.style.background = "#904edb";
-  player2Card.style.background = "#cdb1e9";
+};
+
+const fadeOut = () => {
+  if (activeGame) {
+    if (activePlayer) {
+      player1Card.style.background = "#cdb1e9";
+      player2Card.style.background = "#904edb";
+    } else {
+      player2Card.style.background = "#cdb1e9";
+      player1Card.style.background = "#904edb";
+    }
+  }
 };
 
 rollBtn.addEventListener("click", rollDices);
