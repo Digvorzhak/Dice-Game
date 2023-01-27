@@ -132,6 +132,80 @@ body {
   font-size: 50px;
 }
 
+.modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  /* visibility: hidden; */
+  transition: 250ms opacity ease-in;
+  /* pointer-events: none; */
+}
+
+.visible {
+  /* visibility: visible; */
+  opacity: 1;
+}
+
+.display-none {
+  display: none;
+}
+
+.modal-container {
+  background: rgb(226, 45, 115);
+  width: 50rem;
+  height: 500px;
+  padding: 1.5rem;
+  border-radius: 15px;
+}
+
+.modal-container h1 {
+  text-align: center;
+}
+.modal-container ul {
+  margin-left: 20px;
+}
+
+.modal-container ul li {
+  color: rgb(255, 255, 255);
+  /* line-height: 1.5rem; */
+  /* border-top: 1px solid gray; */
+  padding: 0.5rem 0;
+}
+.target-score-input {
+  width: 80px;
+  height: 30px;
+  margin-top: 10px;
+}
+.target-score-input:focus {
+  /* text-decoration: none; */
+  outline: none;
+}
+
+.mini-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+
+.start-game-btn {
+  width: 190px;
+  height: 45px;
+  border-radius: 20px;
+  border: transparent;
+  font-size: 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
 @media only screen and (max-width: 820px) {
   .container {
     width: 75%;

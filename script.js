@@ -1,4 +1,7 @@
 "use strict";
+const modal = document.querySelector(".modal");
+const input = document.querySelector(".target-score-input");
+const startGame = document.querySelector(".start-game-btn");
 const player1Card = document.querySelector(".container-player1");
 const player2Card = document.querySelector(".container-player2");
 const player1Header = document.querySelector(".player1-title");
@@ -14,7 +17,18 @@ const resetBtn = document.querySelector(".new-game-btn");
 const rollBtn = document.querySelector(".roll-dice-btn");
 const holdBtn = document.querySelector(".hold-btn");
 
-const targetScore = 100;
+window.onload = (event) => {
+  setTimeout(() => modal.classList.add("visible"), 500);
+};
+
+let targetScore = 0;
+
+const removeModal = () => {
+  targetScore = Number(input.value);
+  modal.classList.remove("visible");
+  modal.classList.add("display-none");
+  console.log(targetScore);
+};
 
 let activePlayer = true;
 let activeGame = true;
@@ -112,6 +126,7 @@ const fadeOut = () => {
   }
 };
 
+startGame.addEventListener("click", removeModal);
 rollBtn.addEventListener("click", rollDices);
 holdBtn.addEventListener("click", savePoints);
 resetBtn.addEventListener("click", newGame);
