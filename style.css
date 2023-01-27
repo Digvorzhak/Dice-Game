@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  cursor: url(https://cur.cursors-4u.net/games/gam-4/gam308.cur), auto !important;
 }
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -127,4 +128,94 @@ body {
 }
 .score-player2 {
   font-size: 50px;
+}
+
+@media only screen and (max-width: 480px) {
+  .container {
+    width: 75%;
+    height: 75%;
+  }
+  .current-score-1 {
+    font-size: 25px;
+  }
+
+  .current-score-2 {
+    font-size: 25px;
+  }
+
+  .player1-title {
+    font-size: 20px;
+    margin-top: 80px;
+  }
+
+  .player2-title {
+    font-size: 20px;
+    margin-top: 80px;
+  }
+
+  .score-player1 {
+    font-size: 40px;
+  }
+  .score-player2 {
+    font-size: 40px;
+  }
+  .current-score-box {
+    font-size: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #b580eb;
+    width: 120px;
+    height: 110px;
+    border-radius: 7%;
+    margin-bottom: 60px;
+  }
+
+  .current-score-1 {
+    font-size: 35px;
+  }
+
+  .current-score-2 {
+    font-size: 35px;
+  }
+
+  .container-middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+    position: absolute;
+    left: 130px;
+    top: 160px;
+    /* background: linear-gradient(to right, #b580eb, #cdb1e9); */
+    /* opacity: 0.5; */
+  }
+
+  .container-middle > button {
+    /* background: transparent; */
+    width: 130px;
+    height: 25px;
+    border-radius: 20px;
+    border: transparent;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 2px 5px;
+    /* font-size: 10px; */
+  }
+
+  .dice-img0 {
+    margin-top: 15px;
+    width: 55px;
+    height: 55px;
+  }
+
+  .dice-img1 {
+    width: 55px;
+    height: 55px;
+  }
+  .new-game-btn {
+    /* margin-bottom: 25px; */
+  }
 }
