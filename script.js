@@ -56,6 +56,7 @@ const rollDices = () => {
 };
 
 const savePoints = () => {
+  fadeOut();
   if (activePlayer) {
     player1Score.value += player1Current.value;
     player1Score.innerText = player1Score.value;
@@ -82,6 +83,8 @@ const savePoints = () => {
 };
 
 const newGame = () => {
+  activeGame = true;
+  activePlayer = true;
   diceArr = [0, 0];
   dice0.setAttribute("src", "/Assets/images/dice-3.png");
   dice1.setAttribute("src", "/Assets/images/dice-5.png");
@@ -93,9 +96,8 @@ const newGame = () => {
   player2Current.value = 0;
   player1Current.innerText = 0;
   player2Current.innerText = 0;
-  activeGame = true;
-  fadeOut();
-  activePlayer = true;
+  player1Card.style.background = "#904edb";
+  player2Card.style.background = "#cdb1e9";
 };
 
 const fadeOut = () => {
