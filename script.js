@@ -98,12 +98,12 @@ const savePoints = () => {
     if (player1Score.value >= targetScore) {
       if (player1Score.value === targetScore) {
         winner1.classList.remove("hidden");
-        player1Card.style.background = "#2D2A2E";
-        player2Card.style.background = "#cdb1e9";
+        player1Card.style.background = "#252423";
+        player2Card.style.background = "#2d2a2e";
       } else {
         winner2.classList.remove("hidden");
-        player2Card.style.background = "#2D2A2E";
-        player1Card.style.background = "#cdb1e9";
+        player2Card.style.background = "#252423";
+        player1Card.style.background = "#2d2a2e";
       }
       activeGame = false;
     }
@@ -116,12 +116,12 @@ const savePoints = () => {
     if (player2Score.value >= targetScore) {
       if (player2Score.value === targetScore) {
         winner2.classList.remove("hidden");
-        player2Card.style.background = "#2D2A2E";
-        player1Card.style.background = "#cdb1e9";
+        player2Card.style.background = "#252423";
+        player1Card.style.background = "#2d2a2e";
       } else {
         winner1.classList.remove("hidden");
-        player1Card.style.background = "#2D2A2E";
-        player2Card.style.background = "#cdb1e9";
+        player1Card.style.background = "#252423";
+        player2Card.style.background = "#2d2a2e";
       }
       activeGame = false;
     }
@@ -142,8 +142,8 @@ const newGame = () => {
   player2Current.value = 0;
   player1Current.innerText = 0;
   player2Current.innerText = 0;
-  player1Card.style.background = "#904edb";
-  player2Card.style.background = "#cdb1e9";
+  player1Card.style.background = "#252423";
+  player2Card.style.background = "#2d2a2e";
   winner1.classList.add("hidden");
   winner2.classList.add("hidden");
   gamesPlayed++;
@@ -153,11 +153,11 @@ const newGame = () => {
 const fadeOut = () => {
   if (activeGame) {
     if (activePlayer) {
-      player1Card.style.background = "#cdb1e9";
-      player2Card.style.background = "#904edb";
+      player1Card.style.background = "#2d2a2e";
+      player2Card.style.background = "#252423";
     } else {
-      player2Card.style.background = "#cdb1e9";
-      player1Card.style.background = "#904edb";
+      player2Card.style.background = "#2d2a2e";
+      player1Card.style.background = "#252423";
     }
   }
 };

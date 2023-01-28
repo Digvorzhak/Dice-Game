@@ -6,14 +6,15 @@
 }
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #ffffff;
+  color: #ff852f;
   height: 100vh;
   width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to top left, #b657ce, #563463);
-  /* background: linear-gradient(to top left, #2d2a2e, #323033); */
+  /* background: linear-gradient(to top left, #b657ce, #563463); */
+  /* background: linear-gradient(to top left, #2d2a2e, #252423); */
+  background: #141314;
 }
 
 .container {
@@ -32,10 +33,10 @@ body {
   width: 50%;
   padding: 3px 20px;
   opacity: 1;
-  background: #904edb;
+  background: #252423;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
-  transition: background 1s;
+  transition: background 0.5s;
 }
 
 .container-middle {
@@ -53,6 +54,8 @@ body {
 
 .container-middle > button {
   /* background: transparent; */
+  background: #19181a;
+  color: #ffffff;
   width: 170px;
   height: 45px;
   border-radius: 20px;
@@ -83,10 +86,10 @@ body {
   width: 50%;
   padding: 3px 20px;
   /* opacity: 0.9; */
-  background: #cdb1e9;
+  background: #2d2a2e;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
-  transition: background 1s;
+  transition: background 0.5s;
 }
 
 .top-info {
@@ -96,17 +99,67 @@ body {
   align-items: center;
 }
 
+.current-score-1 {
+  /* position: absolute; */
+  z-index: 1;
+}
+
+.current-score-2 {
+  z-index: 1;
+}
+
+.current-title {
+  z-index: 1;
+}
+
 .current-score-box {
   font-size: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background: #b580eb;
+  background: #1e1d1c;
   width: 200px;
   height: 110px;
   border-radius: 7%;
   margin-bottom: 60px;
+  box-shadow: 16px 14px 20px #0000008c;
+  position: relative;
+  overflow: hidden;
+}
+
+.current-score-box::before {
+  content: "";
+  background-image: conic-gradient(#ff852f 20deg, transparent 120deg);
+  width: 150%;
+  height: 150%;
+  position: absolute;
+  animation: rotate 1.5s linear infinite;
+}
+.current-score-box::after {
+  content: "";
+  width: 195px;
+  height: 105px;
+  background: #101010;
+  position: absolute;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ff852f;
+  font-size: larger;
+  letter-spacing: 5px;
+  box-shadow: inset 20px 20px 20px #0000008c;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
 }
 
 .current-score-1 {
@@ -134,7 +187,12 @@ body {
   font-size: 50px;
 }
 
-.winner1 .winner2 {
+.winner1 {
+  color: #ffffff;
+  transition: all 1s;
+}
+.winner2 {
+  color: #ffffff;
   transition: all 1s;
 }
 
@@ -143,6 +201,7 @@ body {
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   position: absolute;
+  z-index: 1;
   top: 0;
   left: 0;
   display: flex;
@@ -168,7 +227,7 @@ body {
 }
 
 .modal-container {
-  background: rgb(226, 45, 115);
+  background: #252423;
   width: 50rem;
   height: 500px;
   padding: 1.5rem;
@@ -260,8 +319,9 @@ body {
     background: #b580eb;
     width: 180px;
     height: 110px;
-    border-radius: 7%;
+    border-radius: 10px;
     margin-bottom: 60px;
+    /* extra test */
   }
 
   .current-score-1 {
