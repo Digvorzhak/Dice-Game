@@ -134,6 +134,10 @@ body {
   font-size: 50px;
 }
 
+.winner1 .winner2 {
+  transition: all 1s;
+}
+
 .modal {
   width: 100vw;
   height: 100vh;
@@ -148,6 +152,10 @@ body {
   /* visibility: hidden; */
   transition: 250ms opacity ease-in;
   /* pointer-events: none; */
+}
+
+.hidden {
+  opacity: 0;
 }
 
 .visible {

@@ -12,6 +12,8 @@ const player1Score = document.querySelector(".score-player1");
 const player2Score = document.querySelector(".score-player2");
 const player1Current = document.querySelector(".current-score-1");
 const player2Current = document.querySelector(".current-score-2");
+const winner1 = document.querySelector(".winner1");
+const winner2 = document.querySelector(".winner2");
 const dice0 = document.querySelector(".dice-img0");
 const dice1 = document.querySelector(".dice-img1");
 
@@ -30,6 +32,7 @@ const removeModal = () => {
     targetScore = Number(input.value);
     modal.classList.remove("visible");
     setTimeout(() => modal.classList.add("display-none"), 250);
+    backgroundMusic.volume = 0.4;
     backgroundMusic.play();
     console.log(targetScore);
   } else {
@@ -93,9 +96,16 @@ const savePoints = () => {
     player1Current.value = 0;
     player1Current.innerText = 0;
     if (player1Score.value >= targetScore) {
+      if (player1Score.value === targetScore) {
+        winner1.classList.remove("hidden");
+        player1Card.style.background = "#2D2A2E";
+        player2Card.style.background = "#cdb1e9";
+      } else {
+        winner2.classList.remove("hidden");
+        player2Card.style.background = "#2D2A2E";
+        player1Card.style.background = "#cdb1e9";
+      }
       activeGame = false;
-      player1Card.style.background = "#2D2A2E";
-      player2Card.style.background = "#cdb1e9";
     }
   } else {
     player2Score.value += player2Current.value;
@@ -104,9 +114,16 @@ const savePoints = () => {
     player2Current.value = 0;
     player2Current.innerText = 0;
     if (player2Score.value >= targetScore) {
+      if (player2Score.value === targetScore) {
+        winner2.classList.remove("hidden");
+        player2Card.style.background = "#2D2A2E";
+        player1Card.style.background = "#cdb1e9";
+      } else {
+        winner1.classList.remove("hidden");
+        player1Card.style.background = "#2D2A2E";
+        player2Card.style.background = "#cdb1e9";
+      }
       activeGame = false;
-      player2Card.style.background = "#2D2A2E";
-      player1Card.style.background = "#cdb1e9";
     }
   }
 };
@@ -127,6 +144,8 @@ const newGame = () => {
   player2Current.innerText = 0;
   player1Card.style.background = "#904edb";
   player2Card.style.background = "#cdb1e9";
+  winner1.classList.add("hidden");
+  winner2.classList.add("hidden");
   gamesPlayed++;
   localStorage.setItem("Games Played", gamesPlayed);
 };
