@@ -14,6 +14,8 @@ const player1Current = document.querySelector(".current-score-1");
 const player2Current = document.querySelector(".current-score-2");
 const winner1 = document.querySelector(".winner1");
 const winner2 = document.querySelector(".winner2");
+const player1win = document.querySelector(".player1-wins");
+const player2win = document.querySelector(".player2-wins");
 const dice0 = document.querySelector(".dice-img0");
 const dice1 = document.querySelector(".dice-img1");
 const currentBox1 = document.querySelector(".current-score-box1");
@@ -30,7 +32,14 @@ window.onload = (event) => {
   currentBox2.classList.remove("current-score-box2");
 };
 
+let player1Wins = 0;
+let player2Wins = 0;
 let targetScore = 0;
+let rollDiced = 0;
+let gamesPlayed = 1;
+let activePlayer = true;
+let activeGame = true;
+let diceArr = [0, 0];
 
 const removeModal = () => {
   if (Number(input.value) > 1) {
@@ -46,18 +55,10 @@ const removeModal = () => {
   }
 };
 
-let activePlayer = true;
-let activeGame = true;
-let defaultBoxActivity = true;
-
-let diceArr = [0, 0];
 player1Score.value = 0;
 player2Score.value = 0;
 player1Current.value = 0;
 player2Current.value = 0;
-
-let rollDiced = 0;
-let gamesPlayed = 1;
 
 const switchActiveBox = (newGame) => {
   if (newGame) {
@@ -129,12 +130,18 @@ const savePoints = () => {
       if (player1Score.value >= targetScore) {
         if (player1Score.value === targetScore) {
           activeGame = false;
+          player1Wins++;
           winner1.classList.remove("hidden");
+          player1win.classList.remove("hidden");
+          player1win.innerText = `Wins: ${player1Wins}`;
           player1Card.style.background = "#252423";
           player2Card.style.background = "#2d2a2e";
         } else {
           activeGame = false;
+          player2Wins++;
           winner2.classList.remove("hidden");
+          player2win.classList.remove("hidden");
+          player2win.innerText = `Wins: ${player2Wins}`;
           currentBox2.classList.add("current-score-box2");
           currentBox2.classList.remove("disabled-box");
           player2Card.style.background = "#252423";
@@ -150,12 +157,20 @@ const savePoints = () => {
       player2Current.innerText = 0;
       if (player2Score.value >= targetScore) {
         if (player2Score.value === targetScore) {
+          activeGame = false;
+          player2Wins++;
           winner2.classList.remove("hidden");
+          player2win.classList.remove("hidden");
+          player2win.innerText = `Wins: ${player2Wins}`;
 
           player2Card.style.background = "#252423";
           player1Card.style.background = "#2d2a2e";
         } else {
+          activeGame = false;
+          player1Wins++;
           winner1.classList.remove("hidden");
+          player1win.classList.remove("hidden");
+          player1win.innerText = `Wins: ${player1Wins}`;
           currentBox1.classList.add("current-score-box1");
           currentBox1.classList.remove("disabled-box");
           player1Card.style.background = "#252423";

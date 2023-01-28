@@ -78,6 +78,16 @@ body {
   height: 105px;
 }
 
+.player1-wins {
+  color: #ffffff;
+  transition: all 1s;
+}
+
+.player2-wins {
+  color: #ffffff;
+  transition: all 1s;
+}
+
 .container-player2 {
   display: flex;
   flex-direction: column;
