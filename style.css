@@ -357,6 +357,8 @@ body {
   font-size: 20px;
   cursor: pointer;
   margin-top: 10px;
+  background: #19181a;
+  color: #ffffff;
 }
 
 .bad-input {
