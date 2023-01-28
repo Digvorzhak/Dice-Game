@@ -1,6 +1,7 @@
 "use strict";
 const modal = document.querySelector(".modal");
 const input = document.querySelector(".target-score-input");
+const badTargetScore = document.querySelector(".bad-input");
 const backgroundMusic = document.querySelector(".bgc-music");
 const startGame = document.querySelector(".start-game-btn");
 const player1Card = document.querySelector(".container-player1");
@@ -31,6 +32,9 @@ const removeModal = () => {
     setTimeout(() => modal.classList.add("display-none"), 250);
     backgroundMusic.play();
     console.log(targetScore);
+  } else {
+    // badTargetScore.classList.add("visible");
+    badTargetScore.style.opacity = "1";
   }
 };
 
@@ -73,8 +77,9 @@ const rollDices = () => {
       player2Current.value += diceArr.reduce((accum, diceNum) => accum + diceNum);
       player2Current.innerText = player2Current.value;
     }
-    rollDiced++;
 
+    // LOCAL STORAGE TESTING
+    rollDiced++;
     localStorage.setItem("Roll Diced", rollDiced);
   }
 };
