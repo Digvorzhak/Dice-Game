@@ -1,6 +1,7 @@
 "use strict";
 const modal = document.querySelector(".modal");
 const input = document.querySelector(".target-score-input");
+const backgroundMusic = document.querySelector(".bgc-music");
 const startGame = document.querySelector(".start-game-btn");
 const player1Card = document.querySelector(".container-player1");
 const player2Card = document.querySelector(".container-player2");
@@ -24,10 +25,13 @@ window.onload = (event) => {
 let targetScore = 0;
 
 const removeModal = () => {
-  targetScore = Number(input.value);
-  modal.classList.remove("visible");
-  modal.classList.add("display-none");
-  console.log(targetScore);
+  if (Number(input.value) > 1) {
+    targetScore = Number(input.value);
+    modal.classList.remove("visible");
+    setTimeout(() => modal.classList.add("display-none"), 250);
+    backgroundMusic.play();
+    console.log(targetScore);
+  }
 };
 
 let activePlayer = true;
@@ -38,6 +42,9 @@ player1Score.value = 0;
 player2Score.value = 0;
 player1Current.value = 0;
 player2Current.value = 0;
+
+let rollDiced = 0;
+let gamesPlayed = 1;
 
 const rollDices = () => {
   if (activeGame) {
@@ -66,6 +73,9 @@ const rollDices = () => {
       player2Current.value += diceArr.reduce((accum, diceNum) => accum + diceNum);
       player2Current.innerText = player2Current.value;
     }
+    rollDiced++;
+
+    localStorage.setItem("Roll Diced", rollDiced);
   }
 };
 
@@ -112,6 +122,8 @@ const newGame = () => {
   player2Current.innerText = 0;
   player1Card.style.background = "#904edb";
   player2Card.style.background = "#cdb1e9";
+  gamesPlayed++;
+  localStorage.setItem("Games Played", gamesPlayed);
 };
 
 const fadeOut = () => {
