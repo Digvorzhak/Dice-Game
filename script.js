@@ -16,6 +16,8 @@ const winner1 = document.querySelector(".winner1");
 const winner2 = document.querySelector(".winner2");
 const dice0 = document.querySelector(".dice-img0");
 const dice1 = document.querySelector(".dice-img1");
+const currentBox1 = document.querySelector(".current-score-box1");
+const currentBox2 = document.querySelector(".current-score-box2");
 
 const resetBtn = document.querySelector(".new-game-btn");
 const rollBtn = document.querySelector(".roll-dice-btn");
@@ -23,6 +25,9 @@ const holdBtn = document.querySelector(".hold-btn");
 
 window.onload = (event) => {
   setTimeout(() => modal.classList.add("visible"), 500);
+  // currentBox2.classList.add(".disabled-box");
+  currentBox2.classList.toggle("disabled-box");
+  currentBox2.classList.remove("current-score-box2");
 };
 
 let targetScore = 0;
@@ -32,7 +37,7 @@ const removeModal = () => {
     targetScore = Number(input.value);
     modal.classList.remove("visible");
     setTimeout(() => modal.classList.add("display-none"), 250);
-    backgroundMusic.volume = 0.4;
+    backgroundMusic.volume = 0.2;
     backgroundMusic.play();
     console.log(targetScore);
   } else {
@@ -43,6 +48,7 @@ const removeModal = () => {
 
 let activePlayer = true;
 let activeGame = true;
+let defaultBoxActivity = true;
 
 let diceArr = [0, 0];
 player1Score.value = 0;
@@ -53,6 +59,28 @@ player2Current.value = 0;
 let rollDiced = 0;
 let gamesPlayed = 1;
 
+const switchActiveBox = (newGame) => {
+  if (newGame) {
+    currentBox1.classList.add("current-score-box1");
+    currentBox1.classList.remove("disabled-box");
+    return;
+  }
+
+  if (activeGame) {
+    if (activePlayer) {
+      currentBox1.classList.toggle("disabled-box");
+      currentBox1.classList.remove("current-score-box1");
+      currentBox2.classList.toggle("current-score-box2");
+      currentBox2.classList.remove("disabled-box");
+    } else {
+      currentBox2.classList.toggle("disabled-box");
+      currentBox2.classList.remove("current-score-box2");
+      currentBox1.classList.toggle("current-score-box1");
+      currentBox1.classList.remove("disabled-box");
+    }
+  }
+};
+
 const rollDices = () => {
   if (activeGame) {
     diceArr[0] = Math.trunc(Math.random() * 6) + 1;
@@ -61,6 +89,7 @@ const rollDices = () => {
     dice1.setAttribute("src", `/Assets/images/dice-${diceArr[1]}.png`);
     if (diceArr[0] + diceArr[1] === 12) {
       fadeOut();
+      switchActiveBox();
       if (activePlayer) {
         diceArr = [0, 0];
         player1Current.value = 0;
@@ -89,47 +118,58 @@ const rollDices = () => {
 
 const savePoints = () => {
   fadeOut();
-  if (activePlayer) {
-    player1Score.value += player1Current.value;
-    player1Score.innerText = player1Score.value;
-    activePlayer = false;
-    player1Current.value = 0;
-    player1Current.innerText = 0;
-    if (player1Score.value >= targetScore) {
-      if (player1Score.value === targetScore) {
-        winner1.classList.remove("hidden");
-        player1Card.style.background = "#252423";
-        player2Card.style.background = "#2d2a2e";
-      } else {
-        winner2.classList.remove("hidden");
-        player2Card.style.background = "#252423";
-        player1Card.style.background = "#2d2a2e";
+  if (activeGame) {
+    switchActiveBox();
+    if (activePlayer) {
+      player1Score.value += player1Current.value;
+      player1Score.innerText = player1Score.value;
+      activePlayer = false;
+      player1Current.value = 0;
+      player1Current.innerText = 0;
+      if (player1Score.value >= targetScore) {
+        if (player1Score.value === targetScore) {
+          activeGame = false;
+          winner1.classList.remove("hidden");
+          player1Card.style.background = "#252423";
+          player2Card.style.background = "#2d2a2e";
+        } else {
+          activeGame = false;
+          winner2.classList.remove("hidden");
+          currentBox2.classList.add("current-score-box2");
+          currentBox2.classList.remove("disabled-box");
+          player2Card.style.background = "#252423";
+          player1Card.style.background = "#2d2a2e";
+        }
+        activeGame = false;
       }
-      activeGame = false;
-    }
-  } else {
-    player2Score.value += player2Current.value;
-    player2Score.innerText = player2Score.value;
-    activePlayer = true;
-    player2Current.value = 0;
-    player2Current.innerText = 0;
-    if (player2Score.value >= targetScore) {
-      if (player2Score.value === targetScore) {
-        winner2.classList.remove("hidden");
-        player2Card.style.background = "#252423";
-        player1Card.style.background = "#2d2a2e";
-      } else {
-        winner1.classList.remove("hidden");
-        player1Card.style.background = "#252423";
-        player2Card.style.background = "#2d2a2e";
+    } else {
+      player2Score.value += player2Current.value;
+      player2Score.innerText = player2Score.value;
+      activePlayer = true;
+      player2Current.value = 0;
+      player2Current.innerText = 0;
+      if (player2Score.value >= targetScore) {
+        if (player2Score.value === targetScore) {
+          winner2.classList.remove("hidden");
+
+          player2Card.style.background = "#252423";
+          player1Card.style.background = "#2d2a2e";
+        } else {
+          winner1.classList.remove("hidden");
+          currentBox1.classList.add("current-score-box1");
+          currentBox1.classList.remove("disabled-box");
+          player1Card.style.background = "#252423";
+          player2Card.style.background = "#2d2a2e";
+        }
+        activeGame = false;
       }
-      activeGame = false;
     }
   }
 };
 
 const newGame = () => {
   activeGame = true;
+  switchActiveBox(activePlayer);
   activePlayer = true;
   diceArr = [0, 0];
   dice0.setAttribute("src", "/Assets/images/dice-3.png");
@@ -146,6 +186,7 @@ const newGame = () => {
   player2Card.style.background = "#2d2a2e";
   winner1.classList.add("hidden");
   winner2.classList.add("hidden");
+
   gamesPlayed++;
   localStorage.setItem("Games Played", gamesPlayed);
 };

@@ -112,7 +112,7 @@ body {
   z-index: 1;
 }
 
-.current-score-box {
+.current-score-box1 {
   font-size: 25px;
   display: flex;
   flex-direction: column;
@@ -128,7 +128,7 @@ body {
   overflow: hidden;
 }
 
-.current-score-box::before {
+.current-score-box1::before {
   content: "";
   background-image: conic-gradient(#ff852f 20deg, transparent 120deg);
   width: 150%;
@@ -136,11 +136,85 @@ body {
   position: absolute;
   animation: rotate 1.5s linear infinite;
 }
-.current-score-box::after {
+.current-score-box1::after {
   content: "";
   width: 195px;
   height: 105px;
-  background: #101010;
+  background: #1e1d1c;
+  position: absolute;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ff852f;
+  font-size: larger;
+  letter-spacing: 5px;
+  box-shadow: inset 20px 20px 20px #0000008c;
+}
+
+.current-score-box2 {
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #1e1d1c;
+  width: 200px;
+  height: 110px;
+  border-radius: 7%;
+  margin-bottom: 60px;
+  box-shadow: 16px 14px 20px #0000008c;
+  position: relative;
+  overflow: hidden;
+}
+
+.current-score-box2::before {
+  content: "";
+  background-image: conic-gradient(#ff852f 20deg, transparent 120deg);
+  width: 150%;
+  height: 150%;
+  position: absolute;
+  animation: rotate 1.5s linear infinite;
+}
+.current-score-box2::after {
+  content: "";
+  width: 195px;
+  height: 105px;
+  background: #1e1d1c;
+  position: absolute;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #ff852f;
+  font-size: larger;
+  letter-spacing: 5px;
+  box-shadow: inset 20px 20px 20px #0000008c;
+}
+
+.disabled-box {
+  font-size: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #1e1d1c;
+  width: 200px;
+  height: 110px;
+  border-radius: 7%;
+  margin-bottom: 60px;
+  box-shadow: 16px 14px 20px #0000008c;
+  position: relative;
+  overflow: hidden;
+}
+
+.disabled-box::after {
+  content: "";
+  width: 195px;
+  height: 105px;
+  background: #1e1d1c;
   position: absolute;
   border-radius: 10px;
   display: flex;
