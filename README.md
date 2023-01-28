@@ -1,1 +1,2 @@
-# Dice-Game
+# Crazy Dices
+"Crazy Dices"
