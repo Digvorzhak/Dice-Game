@@ -1,3 +1,5 @@
+https://crazydices.netlify.app
+
 # Crazy Dices
 "Crazy Dices"
 
